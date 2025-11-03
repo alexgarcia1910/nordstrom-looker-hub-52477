@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Home, Users, DollarSign, ShoppingBag, Store, Truck, Cpu, Menu, X, ChevronLeft, ChevronRight, Settings } from "lucide-react";
+import { Home, Users, DollarSign, ShoppingBag, Store, Truck, Cpu, Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Tooltip,
@@ -131,34 +131,6 @@ export const SidebarV8 = ({ selectedCategory, onCategorySelect, onAdminToggle, i
             return button;
           })}
         </nav>
-
-        <div className="px-3 pb-4 mt-auto pt-4">
-          {isCollapsed ? (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant={isAdminMode ? "secondary" : "ghost"}
-                  className="w-full justify-center px-2"
-                  onClick={onAdminToggle}
-                >
-                  <Settings className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="right">
-                <p>Settings</p>
-              </TooltipContent>
-            </Tooltip>
-          ) : (
-            <Button
-              variant={isAdminMode ? "secondary" : "ghost"}
-              className="w-full justify-start font-normal"
-              onClick={onAdminToggle}
-            >
-              <Settings className="h-4 w-4 mr-3" />
-              Settings
-            </Button>
-          )}
-        </div>
       </aside>
 
       {isOpen && (
