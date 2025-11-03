@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Users, DollarSign, ShoppingBag, Store, Truck, Cpu, Menu, X, ChevronLeft, ChevronRight, Settings } from "lucide-react";
+import { Home, Users, DollarSign, ShoppingBag, Store, Truck, Cpu, Menu, X, ChevronLeft, ChevronRight, Settings } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Tooltip,
@@ -20,6 +20,7 @@ interface SidebarV8Props {
 }
 
 const categories = [
+  { id: "home-v2", label: "Home v2", icon: Home },
   { id: "customer", label: "Customer", icon: Users },
   { id: "finance", label: "Finance", icon: DollarSign },
   { id: "merchandising", label: "Merchandising", icon: ShoppingBag },
