@@ -197,17 +197,18 @@ const V8 = () => {
                   actionHref="#"
                 />
                 
-                <ActivityCard
-                  icon={LayoutGrid}
-                  title="Boards"
-                  description="View or organize collections of dashboards and reports grouped by topic."
-                  items={boardsData}
-                  actionLabel="View All Boards"
-                  actionHref="#"
-                />
-              </div>
-
+              <ActivityCard
+                icon={LayoutGrid}
+                title="Boards"
+                description="View or organize collections of dashboards and reports grouped by topic."
+                items={boardsData}
+                actionLabel="View All Boards"
+                actionHref="#"
+              />
             </div>
+
+            <AllDashboardsExplores />
+          </div>
           )}
         </main>
       </div>
