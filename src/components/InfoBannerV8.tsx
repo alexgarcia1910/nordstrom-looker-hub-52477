@@ -2,6 +2,7 @@ import { useState } from "react";
 import { X, Info } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 
 export const InfoBannerV8 = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -43,7 +44,7 @@ export const InfoBannerV8 = () => {
               </li>
               <li className="flex items-start">
                 <span className="mr-2">•</span>
-                <span><strong>Understanding Status:</strong> Status indicators show content health from the Looker SDK validator. Operational means 0 errors, Warning indicates 1-3 errors, and Critical flags 4+ errors.</span>
+                <span><strong>Understanding Status:</strong> Status indicators show content health from the Looker SDK validator. <Badge variant="secondary" className="bg-green-100 text-green-800 hover:bg-green-100 mx-1">Operational</Badge> means 0 errors, <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100 mx-1">Warning</Badge> indicates 1-3 errors, and <Badge variant="secondary" className="bg-red-100 text-red-800 hover:bg-red-100 mx-1">Critical</Badge> flags 4+ errors.</span>
               </li>
             </ul>
           </div>
