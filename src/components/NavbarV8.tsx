@@ -135,11 +135,15 @@ export const NavbarV8 = () => {
                         <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
                           <span>{item.domain}</span>
                           <span>·</span>
-                          <span className="flex items-center gap-1">
-                            {item.environment === "Production" ? "✅" : "👤"} {item.environment === "Production" ? "Certified" : "User-created"}
-                          </span>
-                          <span>·</span>
                           <span>{item.type}</span>
+                          {item.environment === "Production" && (
+                            <>
+                              <span>·</span>
+                              <span className="flex items-center gap-1">
+                                ✅ Certified
+                              </span>
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>
