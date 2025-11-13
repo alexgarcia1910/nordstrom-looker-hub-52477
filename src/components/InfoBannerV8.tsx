@@ -39,7 +39,7 @@ export const InfoBannerV8 = () => {
               </li>
               <li className="flex items-start">
                 <span className="mr-2">•</span>
-                <span><strong>Need Help:</strong> Use the Issue Escalation link in the top-right corner for support or to report data issues.</span>
+                <span><strong>Need Help:</strong> Use the Report an issue link in the top-right corner for support or to report data issues.</span>
               </li>
             </ul>
           </div>

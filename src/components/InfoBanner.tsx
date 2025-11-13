@@ -35,7 +35,7 @@ export const InfoBanner = () => {
               </li>
               <li className="flex items-start">
                 <span className="mr-2">•</span>
-                <span><strong>Getting Help:</strong> Use Job Aids or Issue Escalation in the top-right for support</span>
+                <span><strong>Getting Help:</strong> Use Job Aids or Report an issue in the top-right for support</span>
               </li>
             </ul>
           </div>
