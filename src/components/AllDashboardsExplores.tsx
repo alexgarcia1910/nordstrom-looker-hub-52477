@@ -16,6 +16,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const allAssets = [
   { type: "Dashboard", name: "Sales Performance Dashboard", domain: "Finance", subdomain: "Performance & KPIs", status: "Operational", owner: "Finance Analytics Team" },
@@ -61,12 +67,26 @@ export const AllDashboardsExplores = () => {
     }
   };
 
+  const getStatusTooltipText = (status: string) => {
+    switch (status) {
+      case "Operational":
+        return "0 errors detected by Looker SDK content validator";
+      case "Warning":
+        return "1-3 errors detected by Looker SDK content validator";
+      case "Critical":
+        return "4+ errors detected by Looker SDK content validator";
+      default:
+        return "Status unknown";
+    }
+  };
+
   const domains = ["All", ...Array.from(new Set(allAssets.map(a => a.domain)))];
   const subdomains = ["All", ...Array.from(new Set(allAssets.map(a => a.subdomain)))];
   const owners = ["All", ...Array.from(new Set(allAssets.map(a => a.owner)))];
 
   return (
-    <div className="mt-12 border-t border-border pt-12">
+    <TooltipProvider>
+      <div className="mt-12 border-t border-border pt-12">
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-2">
           <h2 className="text-3xl font-bold text-foreground">All Dashboards & Explores</h2>
@@ -180,9 +200,16 @@ export const AllDashboardsExplores = () => {
                 <TableCell className="text-muted-foreground whitespace-nowrap">{asset.domain}</TableCell>
                 <TableCell className="text-muted-foreground whitespace-nowrap">{asset.subdomain}</TableCell>
                 <TableCell className="whitespace-nowrap">
-                  <Badge variant="secondary" className={getStatusColor(asset.status)}>
-                    {asset.status}
-                  </Badge>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Badge variant="secondary" className={getStatusColor(asset.status)}>
+                        {asset.status}
+                      </Badge>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{getStatusTooltipText(asset.status)}</p>
+                    </TooltipContent>
+                  </Tooltip>
                 </TableCell>
                 <TableCell className="text-muted-foreground whitespace-nowrap">{asset.owner}</TableCell>
               </TableRow>
@@ -202,5 +229,6 @@ export const AllDashboardsExplores = () => {
         </a>
       </div>
     </div>
+    </TooltipProvider>
   );
 };
