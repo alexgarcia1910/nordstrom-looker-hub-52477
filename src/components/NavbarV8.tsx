@@ -136,7 +136,7 @@ export const NavbarV8 = () => {
                           <span>{item.domain}</span>
                           <span>·</span>
                           <span className="flex items-center gap-1">
-                            {item.environment === "Production" ? "✅" : "🧪"} {item.environment === "Production" ? "Certified" : item.environment}
+                            {item.environment === "Production" ? "✅" : "👤"} {item.environment === "Production" ? "Certified" : "User-created"}
                           </span>
                           <span>·</span>
                           <span>{item.type}</span>
