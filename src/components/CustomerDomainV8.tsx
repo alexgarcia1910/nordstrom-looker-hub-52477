@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Heart, LayoutGrid, Search, BookOpen, GraduationCap, ExternalLink } from "lucide-react";
+import { Heart, LayoutGrid, Search, GraduationCap, ExternalLink } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Card } from "./ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
@@ -169,16 +169,6 @@ export const CustomerDomainV8 = () => {
 
           {/* Info Cards - Right Side */}
           <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
-            <Card className="p-4 flex items-center gap-3 hover:shadow-md transition-shadow cursor-pointer w-full sm:max-w-sm">
-              <BookOpen className="h-5 w-5 text-foreground flex-shrink-0" />
-              <div>
-                <h3 className="font-semibold text-sm text-foreground">Access & Onboarding</h3>
-                <p className="text-xs text-muted-foreground">
-                  Guides and onboarding resources for Customer teams.
-                </p>
-              </div>
-            </Card>
-
             <Card className="p-4 flex items-center gap-3 hover:shadow-md transition-shadow cursor-pointer w-full sm:max-w-sm">
               <GraduationCap className="h-5 w-5 text-foreground flex-shrink-0" />
               <div>
