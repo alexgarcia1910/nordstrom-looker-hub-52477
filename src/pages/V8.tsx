@@ -8,7 +8,7 @@ import { FinanceDomainV8 } from "@/components/FinanceDomainV8";
 import { MerchandisingDomainV8 } from "@/components/MerchandisingDomainV8";
 import { StoreSellingDomainV8 } from "@/components/StoreSellingDomainV8";
 import { TechnologyDomainV8 } from "@/components/TechnologyDomainV8";
-import { Heart, Clock, LayoutGrid, ShieldAlert, X } from "lucide-react";
+import { Heart, Clock, LayoutGrid, ShieldAlert, X, FolderHeart } from "lucide-react";
 import { AllDashboardsExplores } from "@/components/AllDashboardsExplores";
 import {
   AlertDialog,
@@ -36,6 +36,12 @@ const boardsData = [
   { name: "Q4 Executive Summary", domain: "Board", timestamp: "Updated Oct 25" },
   { name: "Store Operations KPI Board", domain: "Board", timestamp: "Updated Oct 20" },
   { name: "Digital Sales Performance", domain: "Board", timestamp: "Updated Oct 12" },
+];
+
+const myFolderData = [
+  { name: "Custom Revenue Analysis", domain: "My Folder", timestamp: "Modified 1 day ago" },
+  { name: "Personal KPI Dashboard", domain: "My Folder", timestamp: "Modified 3 days ago" },
+  { name: "Team Performance Report", domain: "My Folder", timestamp: "Modified 5 days ago" },
 ];
 
 const V8 = () => {
@@ -178,7 +184,7 @@ const V8 = () => {
 
               <InfoBannerV8 />
               
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6 mb-12">
                 <ActivityCard
                   icon={Heart}
                   title="Favorites"
@@ -197,14 +203,23 @@ const V8 = () => {
                   actionHref="#"
                 />
                 
-              <ActivityCard
-                icon={LayoutGrid}
-                title="Boards"
-                description="View or organize collections of dashboards and reports grouped by topic."
-                items={boardsData}
-                actionLabel="View All Boards"
-                actionHref="#"
-              />
+                <ActivityCard
+                  icon={LayoutGrid}
+                  title="Boards"
+                  description="View or organize collections of dashboards and reports grouped by topic."
+                  items={boardsData}
+                  actionLabel="View All Boards"
+                  actionHref="#"
+                />
+
+                <ActivityCard
+                  icon={FolderHeart}
+                  title="My Folder"
+                  description="Your personal workspace for custom dashboards and saved content."
+                  items={myFolderData}
+                  actionLabel="Open My Folder"
+                  actionHref="#"
+                />
             </div>
 
             <AllDashboardsExplores />
