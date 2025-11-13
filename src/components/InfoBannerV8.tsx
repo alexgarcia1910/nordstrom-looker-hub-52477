@@ -18,7 +18,7 @@ export const InfoBannerV8 = () => {
           
           <div className="flex-1">
             <h3 className="font-medium mb-3 text-foreground">
-              5 Things to Know About Looker
+              6 Things to Know About Looker
             </h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-start">
@@ -40,6 +40,10 @@ export const InfoBannerV8 = () => {
               <li className="flex items-start">
                 <span className="mr-2">•</span>
                 <span><strong>Need Help:</strong> Use the Report an issue link in the top-right corner for support or to report data issues.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span><strong>Understanding Status:</strong> Status indicators show content health from the Looker SDK validator. Operational means 0 errors, Warning indicates 1-3 errors, and Critical flags 4+ errors.</span>
               </li>
             </ul>
           </div>
