@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { AlertCircle, Search, LayoutGrid } from "lucide-react";
+import { AlertCircle, Search, LayoutGrid, GraduationCap } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
@@ -155,6 +155,17 @@ export const NavbarV8 = () => {
         </div>
         
         <div className="hidden md:flex items-center gap-4">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-sm font-normal"
+            asChild
+          >
+            <a href="https://nordstrom.com" target="_blank" rel="noopener noreferrer">
+              <GraduationCap className="mr-2 h-4 w-4" />
+              Training & Resources
+            </a>
+          </Button>
           <Button
             variant="ghost"
             size="sm"
