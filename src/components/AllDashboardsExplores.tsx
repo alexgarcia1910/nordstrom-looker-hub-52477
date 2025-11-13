@@ -24,18 +24,18 @@ import {
 } from "@/components/ui/tooltip";
 
 const allAssets = [
-  { type: "Dashboard", name: "Sales Performance Dashboard", domain: "Finance", subdomain: "Performance & KPIs", status: "Operational", owner: "Finance Analytics Team" },
-  { type: "Explore", name: "Store Traffic Explorer", domain: "Store Selling", subdomain: "Sales & Performance", status: "Warning", owner: "Retail Data Team" },
-  { type: "Dashboard", name: "Inventory Insights Dashboard", domain: "Merchandising", subdomain: "Product Lifecycle", status: "Operational", owner: "Merch Analytics" },
-  { type: "Dashboard", name: "Labor Cost Breakdown", domain: "Store Selling", subdomain: "Workforce Planning", status: "Critical", owner: "Retail Analytics" },
-  { type: "Dashboard", name: "Supply Chain Overview", domain: "Supply Chain", subdomain: "Logistics", status: "Operational", owner: "Ops Insights" },
-  { type: "Explore", name: "Tech Performance Monitor", domain: "Technology", subdomain: "Systems Health", status: "Operational", owner: "IT Analytics" },
-  { type: "Dashboard", name: "Promotions Summary", domain: "Merchandising", subdomain: "Pricing & Promotions", status: "Warning", owner: "Merch Data Team" },
-  { type: "Dashboard", name: "Revenue Forecasting Dashboard", domain: "Finance", subdomain: "Planning & Forecasting", status: "Operational", owner: "Finance Analytics Team" },
-  { type: "Explore", name: "Customer Segmentation Explorer", domain: "Merchandising", subdomain: "Buying & Planning", status: "Operational", owner: "Merch Analytics" },
-  { type: "Dashboard", name: "Store Operations Dashboard", domain: "Store Selling", subdomain: "Store Operations", status: "Warning", owner: "Retail Analytics" },
-  { type: "Dashboard", name: "Vendor Performance Dashboard", domain: "Merchandising", subdomain: "Vendor Performance", status: "Critical", owner: "Merch Data Team" },
-  { type: "Explore", name: "Financial Health Explorer", domain: "Finance", subdomain: "Financial Reporting", status: "Operational", owner: "Finance Analytics Team" },
+  { type: "Dashboard", name: "Sales Performance Dashboard", domain: "Finance", subdomain: "Performance & KPIs", status: "Operational", certification: "Certified", owner: "Finance Analytics Team" },
+  { type: "Explore", name: "Store Traffic Explorer", domain: "Store Selling", subdomain: "Sales & Performance", status: "Warning", certification: "User-Created", owner: "Retail Data Team" },
+  { type: "Dashboard", name: "Inventory Insights Dashboard", domain: "Merchandising", subdomain: "Product Lifecycle", status: "Operational", certification: "Certified", owner: "Merch Analytics" },
+  { type: "Dashboard", name: "Labor Cost Breakdown", domain: "Store Selling", subdomain: "Workforce Planning", status: "Critical", certification: "User-Created", owner: "Retail Analytics" },
+  { type: "Dashboard", name: "Supply Chain Overview", domain: "Supply Chain", subdomain: "Logistics", status: "Operational", certification: "Certified", owner: "Ops Insights" },
+  { type: "Explore", name: "Tech Performance Monitor", domain: "Technology", subdomain: "Systems Health", status: "Operational", certification: "Certified", owner: "IT Analytics" },
+  { type: "Dashboard", name: "Promotions Summary", domain: "Merchandising", subdomain: "Pricing & Promotions", status: "Warning", certification: "User-Created", owner: "Merch Data Team" },
+  { type: "Dashboard", name: "Revenue Forecasting Dashboard", domain: "Finance", subdomain: "Planning & Forecasting", status: "Operational", certification: "Certified", owner: "Finance Analytics Team" },
+  { type: "Explore", name: "Customer Segmentation Explorer", domain: "Merchandising", subdomain: "Buying & Planning", status: "Operational", certification: "Certified", owner: "Merch Analytics" },
+  { type: "Dashboard", name: "Store Operations Dashboard", domain: "Store Selling", subdomain: "Store Operations", status: "Warning", certification: "User-Created", owner: "Retail Analytics" },
+  { type: "Dashboard", name: "Vendor Performance Dashboard", domain: "Merchandising", subdomain: "Vendor Performance", status: "Critical", certification: "User-Created", owner: "Merch Data Team" },
+  { type: "Explore", name: "Financial Health Explorer", domain: "Finance", subdomain: "Financial Reporting", status: "Operational", certification: "Certified", owner: "Finance Analytics Team" },
 ];
 
 export const AllDashboardsExplores = () => {
@@ -43,6 +43,7 @@ export const AllDashboardsExplores = () => {
   const [subdomainFilter, setSubdomainFilter] = useState("all");
   const [typeFilter, setTypeFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
+  const [certificationFilter, setCertificationFilter] = useState("all");
   const [ownerFilter, setOwnerFilter] = useState("all");
 
   const filteredAssets = allAssets.filter((asset) => {
@@ -50,6 +51,7 @@ export const AllDashboardsExplores = () => {
     if (subdomainFilter !== "all" && asset.subdomain !== subdomainFilter) return false;
     if (typeFilter !== "all" && asset.type !== typeFilter) return false;
     if (statusFilter !== "all" && asset.status !== statusFilter) return false;
+    if (certificationFilter !== "all" && asset.certification !== certificationFilter) return false;
     if (ownerFilter !== "all" && asset.owner !== ownerFilter) return false;
     return true;
   });
@@ -153,6 +155,17 @@ export const AllDashboardsExplores = () => {
           </SelectContent>
         </Select>
 
+        <Select value={certificationFilter} onValueChange={setCertificationFilter}>
+          <SelectTrigger className="w-full sm:w-[180px] bg-background">
+            <SelectValue placeholder="Certification" />
+          </SelectTrigger>
+          <SelectContent className="bg-popover">
+            <SelectItem value="all">All</SelectItem>
+            <SelectItem value="Certified">Certified</SelectItem>
+            <SelectItem value="User-Created">User-Created</SelectItem>
+          </SelectContent>
+        </Select>
+
         <Select value={ownerFilter} onValueChange={setOwnerFilter}>
           <SelectTrigger className="w-full sm:w-[180px] bg-background">
             <SelectValue placeholder="Owner" />
@@ -177,6 +190,7 @@ export const AllDashboardsExplores = () => {
               <TableHead className="font-semibold whitespace-nowrap">Domain</TableHead>
               <TableHead className="font-semibold whitespace-nowrap">Subdomain</TableHead>
               <TableHead className="font-semibold whitespace-nowrap">Status</TableHead>
+              <TableHead className="font-semibold whitespace-nowrap">Certification</TableHead>
               <TableHead className="font-semibold whitespace-nowrap">Owner</TableHead>
             </TableRow>
           </TableHeader>
@@ -210,6 +224,17 @@ export const AllDashboardsExplores = () => {
                       <p>{getStatusTooltipText(asset.status)}</p>
                     </TooltipContent>
                   </Tooltip>
+                </TableCell>
+                <TableCell className="whitespace-nowrap">
+                  <Badge 
+                    variant="secondary" 
+                    className={asset.certification === "Certified" 
+                      ? "bg-blue-100 text-blue-800 hover:bg-blue-100" 
+                      : "bg-gray-100 text-gray-800 hover:bg-gray-100"
+                    }
+                  >
+                    {asset.certification}
+                  </Badge>
                 </TableCell>
                 <TableCell className="text-muted-foreground whitespace-nowrap">{asset.owner}</TableCell>
               </TableRow>
