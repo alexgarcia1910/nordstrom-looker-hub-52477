@@ -159,7 +159,7 @@ export const NavbarV8 = () => {
           >
             <a href="https://nordstrom.com" target="_blank" rel="noopener noreferrer">
               <AlertCircle className="mr-2 h-4 w-4" />
-              Issue Escalation
+              Report an issue
             </a>
           </Button>
         </div>
