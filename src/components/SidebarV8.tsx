@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Home, Users, DollarSign, ShoppingBag, Store, Truck, Cpu, Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Home, Users, DollarSign, ShoppingBag, Store, Truck, Cpu, Menu, X, ChevronLeft, ChevronRight, FolderHeart } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Tooltip,
@@ -7,6 +7,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
+import { Separator } from "./ui/separator";
 import { cn } from "@/lib/utils";
 import nordstromLogo from "@/assets/nordstrom-n-logo.png";
 
@@ -130,6 +131,44 @@ export const SidebarV8 = ({ selectedCategory, onCategorySelect, onAdminToggle, i
 
             return button;
           })}
+
+          <Separator className="my-4" />
+
+          {(() => {
+            const isActive = selectedCategory === "my-folder";
+            const myFolderButton = (
+              <Button
+                variant="ghost"
+                className={cn(
+                  "w-full font-normal bg-transparent hover:bg-accent",
+                  isCollapsed ? "justify-center px-2" : "justify-start",
+                  isActive && "bg-secondary font-medium hover:bg-secondary"
+                )}
+                onClick={() => {
+                  onCategorySelect("my-folder");
+                  setIsOpen(false);
+                }}
+              >
+                <FolderHeart className={cn("h-4 w-4", !isCollapsed && "mr-3")} />
+                {!isCollapsed && "My Folder"}
+              </Button>
+            );
+
+            if (isCollapsed) {
+              return (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    {myFolderButton}
+                  </TooltipTrigger>
+                  <TooltipContent side="right">
+                    <p>My Folder</p>
+                  </TooltipContent>
+                </Tooltip>
+              );
+            }
+
+            return myFolderButton;
+          })()}
         </nav>
       </aside>
 
